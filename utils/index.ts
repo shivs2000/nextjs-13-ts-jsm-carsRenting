@@ -5,8 +5,12 @@ export async function fetchCars() {
     "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
   };
 
-  const response = await fetch(url, { headers });
-  const result = response.json();
+  try {
+    const response = await fetch(url, { headers });
+    const result = await response.json();
 
-  return result;
+    return result;
+  } catch (e) {
+    console.log(e + " <-- here error Issue");
+  }
 }
